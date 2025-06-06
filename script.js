@@ -19,36 +19,31 @@ document.getElementById("emailForm").addEventListener("submit", function (e) {
 
 //   trending now
 
- const carousel = document.getElementById("trendingCarousel");
-  const prevBtn = document.getElementById("prevBtn");
+const carousel = document.getElementById("trendingCarousel");
   const nextBtn = document.getElementById("nextBtn");
+  const prevBtn = document.getElementById("prevBtn");
 
-  const scrollAmount = 300;
-
-  prevBtn.addEventListener("click", () => {
-    carousel.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+  nextBtn?.addEventListener("click", () => {
+    carousel.scrollBy({ left: 300, behavior: "smooth" });
   });
 
-  nextBtn.addEventListener("click", () => {
-    carousel.scrollBy({ left: scrollAmount, behavior: "smooth" });
+  prevBtn?.addEventListener("click", () => {
+    carousel.scrollBy({ left: -300, behavior: "smooth" });
   });
-
 
 // questions
-document.querySelectorAll('.faq-toggle').forEach(button => {
-    button.addEventListener('click', () => {
-      const content = button.nextElementSibling;
-      const icon = button.querySelector('span');
 
-      if (content.classList.contains('hidden')) {
-        content.classList.remove('hidden');
-        icon.textContent = '−';
-      } else {
-        content.classList.add('hidden');
-        icon.textContent = '+';
-      }
+
+ const toggles = document.querySelectorAll('.faq-toggle');
+    toggles.forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const content = toggle.nextElementSibling;
+        const icon = toggle.querySelector('span');
+
+        content.classList.toggle('hidden');
+        icon.textContent = content.classList.contains('hidden') ? '+' : '−';
+      });
     });
-  });
 
 
 
