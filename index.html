@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Netflix Clone – Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind Custom Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            netflixRed: "#E50914",
+            netflixDark: "#141414",
+          },
+        },
+      },
+    };
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body class="bg-netflixDark text-white font-sans">
+
+  <!-- Header -->
+<header class="flex items-center justify-between p-4 w-full">
+  <!-- Logo -->
+  <img
+    src="./assests/Netflix_text.png"
+    alt="Netflix Logo"
+    class="h-10 md:h-12 ml-6 mr-8"  
+  />
+
+  <!-- Right: Language Select & Sign In -->
+  <div
+    class="flex items-center gap-3 mr-6 min-w-0"
+  >
+    <!-- Language Selector -->
+    <select
+      class="bg-transparent border border-white text-white px-3 py-2 rounded text-sm min-w-[100px] max-w-[120px] truncate"
+    >
+      <option value="" disabled selected hidden>
+        ऋ<sub>A</sub> English
+      </option>
+      <option value="en" class="text-black">English</option>
+      <option value="hi" class="text-black">Hindi</option>
+    </select>
+
+    <!-- Sign In Button -->
+    <a
+      href="login.html"
+      style="border-radius: 3px;"
+      class="bg-netflixRed hover:bg-red-700 text-white px-6 py-2 rounded text-sm whitespace-nowrap"
+      >Sign In</a
+    >
+  </div>
+</header>
+
+
+
+
+  <!-- Main Section with Background -->
+  <main
+    class="relative flex flex-col items-center justify-center min-h-[70vh] px-4 md:px-6 bg-cover bg-center"
+    style="background-image: url('./assests/images/Movies_Collage.jpg');"
+  >
+    <!-- Dark Overlay -->
+    <div class="absolute inset-0 bg-black bg-opacity-60 z-0"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 text-center max-w-4xl">
+      <h2
+        class="text-3xl sm:text-4xl md:text-6xl font-bold mb-6 leading-tight"
+      >
+        Unlimited movies, TV <br />
+        shows and more
+      </h2>
+      <h4 class="text-lg sm:text-xl md:text-2xl font-bold mb-10">
+        Starts at ₹149. Cancel at any time.
+      </h4>
+
+      <h6 class="font-bold mb-6 text-sm sm:text-base">
+        Ready to watch? Enter your email to create or restart your membership.
+      </h6>
+
+      <div class="w-full max-w-2xl mx-auto">
+        <form
+          id="emailForm"
+          class="flex flex-col md:flex-row items-center gap-4"
+        >
+          <!-- Email Input -->
+          <input
+            id="emailInput"
+            type="email"
+            placeholder="Email address"
+            required
+            class="w-full md:flex-1 bg-transparent px-4 py-4 rounded text-white text-sm focus:outline-none border-2 border-gray-500 hover:border-white transition"
+          />
+
+          <!-- Get Started Button -->
+          <button
+            type="submit"
+            class="bg-netflixRed text-white px-6 py-4 text-sm md:text-lg rounded hover:bg-red-700 transition font-bold"
+          >
+            Get Started &gt;
+          </button>
+        </form>
+
+        <!-- Error Message -->
+        <p
+          id="errorMsg"
+          class="text-red-500 mt-2 max-w-full md:max-w-[350px] mx-auto md:mx-0 hidden"
+        >
+          Invalid email address.
+        </p>
+      </div>
+    </div>
+
+  </main>
+    
+
+
+
+<main class="bg-black"> 
+<img src="./assests/images/redline.png" alt="">
+
+
+<!-- Trending Now  -->
+<section class="mt-10 px-6 max-w-full ml-[25px] mr-[25px] ">
+  <h3 class="text-white text-2xl font-semibold mb-4 ml-4">Trending Now</h3>
+
+  <div class="relative group">
+    <div
+      id="trendingCarousel"
+      class="flex overflow-x-auto scrollbar-hide space-x-4 scroll-smooth snap-x snap-mandatory px-4"
+    >
+      <!-- Card 1 -->
+      <div
+        class="snap-start flex-shrink-0 w-40 md:w-48 lg:w-56 rounded overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-300 relative h-60 bg-black flex items-center justify-center"
+      >
+        <img
+          src="https://i0.wp.com/www.socialnews.xyz/wp-content/uploads/2025/05/02/gp61kilbsaauzze1613861.jpg?quality=80&zoom=1&ssl=1"
+          alt="Card 1"
+          class="max-w-full max-h-full object-contain"
+        />
+        <div
+          class="absolute bottom-2 left-2 bg-netflixRed text-white font-bold text-lg rounded px-2 py-1 z-20"
+        >
+          1
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div
+        class="snap-start flex-shrink-0 w-40 md:w-48 lg:w-56 rounded overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-300 relative h-60 bg-black flex items-center justify-center"
+      >
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwvs8-E3Cl6T-CObNdKnTO_WuwPGBLThtyVQ&s"
+          alt="Card 2"
+          class="max-w-full max-h-full object-contain"
+        />
+        <div
+          class="absolute bottom-2 left-2 bg-netflixRed text-white font-bold text-lg rounded px-2 py-1 z-20"
+        >
+          2
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div
+        class="snap-start flex-shrink-0 w-40 md:w-48 lg:w-56 rounded overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-300 relative h-60 bg-black flex items-center justify-center"
+      >
+        <img
+          src="https://www.acmodasi.in/amdb/images/movie/e/d/chhaava-2025-z4hrv1.jpg"
+          alt="Card 3"
+          class="max-w-full max-h-full object-contain"
+        />
+        <div
+          class="absolute bottom-2 left-2 bg-netflixRed text-white font-bold text-lg rounded px-2 py-1 z-20"
+        >
+          3
+        </div>
+      </div>
+
+      <!-- card 4  -->
+
+       <div
+        class="snap-start flex-shrink-0 w-40 md:w-48 lg:w-56 rounded overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-300 relative h-60 bg-black flex items-center justify-center"
+      >
+        <img
+          src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c0/The_Royals_%282025_TV_series%29.jpg/250px-The_Royals_%282025_TV_series%29.jpg"
+          alt="Card 3"
+          class="max-w-full max-h-full object-contain"
+        />
+        <div
+          class="absolute bottom-2 left-2 bg-netflixRed text-white font-bold text-lg rounded px-2 py-1 z-20"
+        >
+          4
+        </div>
+      </div>
+
+<!-- card 5  -->
+
+ <div
+        class="snap-start flex-shrink-0 w-40 md:w-48 lg:w-56 rounded overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-300 relative h-60 bg-black flex items-center justify-center"
+      >
+        <img
+          src="https://stat5.bollywoodhungama.in/wp-content/uploads/2024/06/Jaat.jpg"
+          alt="Card 3"
+          class="max-w-full max-h-full object-contain"
+        />
+        <div
+          class="absolute bottom-2 left-2 bg-netflixRed text-white font-bold text-lg rounded px-2 py-1 z-20"
+        >
+          5
+        </div>
+      </div>
+
+
+      <!-- card 6 -->
+
+
+ <div
+        class="snap-start flex-shrink-0 w-40 md:w-48 lg:w-56 rounded overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-300 relative h-60 bg-black flex items-center justify-center"
+      >
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSL2HwENvDl_SzCUoXkgA-o-TYdmmXLBml7XWAo1kM2dwKaXbSfOeEe0HTKqKZWwMP_FU8&usqp=CAU"
+          alt="Card 3"
+          class="max-w-full max-h-full object-contain"
+        />
+        <div
+          class="absolute bottom-2 left-2 bg-netflixRed text-white font-bold text-lg rounded px-2 py-1 z-20"
+        >
+          6
+        </div>
+      </div>
+
+
+      <!-- card 7 -->
+
+ <div
+        class="snap-start flex-shrink-0 w-40 md:w-48 lg:w-56 rounded overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-300 relative h-60 bg-black flex items-center justify-center"
+      >
+        <img
+          src="https://i0.wp.com/www.socialnews.xyz/wp-content/uploads/2025/02/13/screenshot-2025-02-13-at-11-49-07-am1070641.jpg?quality=80&zoom=1&ssl=1"
+          alt="Card 3"
+          class="max-w-full max-h-full object-contain"
+        />
+        <div
+          class="absolute bottom-2 left-2 bg-netflixRed text-white font-bold text-lg rounded px-2 py-1 z-20"
+        >
+          7
+        </div>
+      </div>
+
+<!-- card 8 -->
+
+ <div
+        class="snap-start flex-shrink-0 w-40 md:w-48 lg:w-56 rounded overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-300 relative h-60 bg-black flex items-center justify-center"
+      >
+        <img
+          src="https://i.pinimg.com/736x/dc/b1/9b/dcb19b28e3d8e57a3828483792ef8229.jpg"
+          alt="Card 3"
+          class="max-w-full max-h-full object-contain"
+        />
+        <div
+          class="absolute bottom-2 left-2 bg-netflixRed text-white font-bold text-lg rounded px-2 py-1 z-20"
+        >
+          8
+        </div>
+      </div>
+
+<!-- card 9 -->
+
+ <div
+        class="snap-start flex-shrink-0 w-40 md:w-48 lg:w-56 rounded overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-300 relative h-60 bg-black flex items-center justify-center"
+      >
+        <img
+          src="https://i.pinimg.com/736x/31/b1/ea/31b1ea4c9e3d8302460b69f00e31c74a.jpg"
+          alt="Card 3"
+          class="max-w-full max-h-full object-contain"
+        />
+        <div
+          class="absolute bottom-2 left-2 bg-netflixRed text-white font-bold text-lg rounded px-2 py-1 z-20"
+        >
+          9
+        </div>
+      </div>
+
+
+<!-- card 10 -->
+
+ <div
+        class="snap-start flex-shrink-0 w-40 md:w-48 lg:w-56 rounded overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-300 relative h-60 bg-black flex items-center justify-center"
+      >
+        <img
+          src="https://m.media-amazon.com/images/M/MV5BZTBhZTcwNWUtOTZjMi00ZjI2LWEzMzMtNWJkMWQ2ZDA0NTU3XkEyXkFqcGc@._V1_.jpg"
+          alt="Card 3"
+          class="max-w-full max-h-full object-contain"
+        />
+        <div
+          class="absolute bottom-2 left-2 bg-netflixRed text-white font-bold text-lg rounded px-2 py-1 z-20"
+        >
+          10
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Left Arrow -->
+    <button
+      id="prevBtn"
+      class="hidden group-hover:block absolute top-1/2 -left-4 transform -translate-y-1/2 bg-black bg-opacity-60 rounded-full p-2 text-white hover:bg-opacity-80 transition"
+      aria-label="Scroll Left"
+    >
+      &#10094;
+    </button>
+
+    <!-- Right Arrow -->
+    <button
+      id="nextBtn"
+      class="hidden group-hover:block absolute top-1/2 -right-4 transform -translate-y-1/2 bg-black bg-opacity-60 rounded-full p-2 text-white hover:bg-opacity-80 transition"
+      aria-label="Scroll Right"
+    >
+      &#10095;
+    </button>
+  </div>
+</section>
+
+
+
+<!-- why netflix -->
+<section class="mt-10 px-6 max-w-full bg-black  ml-[25px] mr-[25px]">
+    <h3 class="text-white text-2xl font-semibold mb-4 ml-4">More reasons to join</h3>
+
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <!-- Card 1 -->
+    <div  style="background-color: #20111e;"
+    class="relative  rounded-lg p-6 h-64">
+      <h3 class="text-2xl font-semibold mb-3">Enjoy on your TV</h3>
+      <p class="text-[15px] text-gray-300 pr-4">
+        Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more.
+      </p>
+      <img src="./assests/images/reason1.png" alt="TV" class="absolute bottom-4 right-4 w-16 h-16 object-contain" />
+    </div>
+
+    <!-- Card 2 -->
+    <div  style="background-color: #1f1120;"
+    class="relative  rounded-lg p-6  h-64">
+      <h3 class="text-2xl font-semibold mb-3">Download your shows to watch offline</h3>
+      <p class="text-[15px] text-gray-300 pr-4">
+        Save your favourites easily and always have something to watch.
+      </p>
+      <img src="./assests/images/reason 2.png" alt="Download" class="absolute bottom-4 right-4 w-16 h-16 object-contain" />
+    </div>
+
+    <!-- Card 3 -->
+    <div  style="background-color:#20111f;"
+     class="relative  rounded-lg p-6  h-64">
+      <h3 class="text-2xl font-semibold mb-3">Watch everywhere</h3>
+      <p class="text-[15px] text-gray-300 pr-4">
+        Stream unlimited movies and TV shows on your phone, tablet, laptop and TV.
+      </p>
+      <img src="./assests/images/reason 3.png" alt="Devices" class="absolute bottom-4 right-4 w-16 h-16 object-contain" />
+    </div>
+
+    <!-- Card 4 -->
+    <div style="background-color:#20111e;"
+     class="relative  rounded-lg p-6  h-64">
+      <h3 class="text-2xl font-semibold mb-3">Create profiles for kids</h3>
+      <p class="text-[15px] text-gray-300 pr-4">
+        Send kids on adventures with their favourite characters in a space made just for them — free with your membership.
+      </p>
+      <img src="./assests/images/reason 4.png" alt="Kids" class="absolute bottom-4 right-4 w-16 h-16 object-contain" />
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="mt-10 px-6 max-w-full bg-black  ml-[25px] mr-[25px]">
+    <h3 class="text-white text-2xl font-semibold mb-4 ml-4">Frequently Asked Questions
+</h3>
+
+  <div class="max-w-4xl mx-auto  ml-[25px] mr-[25px]">
+
+    <div class="space-y-4">
+      <!-- FAQ Item -->
+      <div style="background-color: #2d2d2d;"
+       class=" rounded overflow-hidden">
+        <button class="w-full text-left px-6 py-5 text-xl font-medium flex justify-between items-center faq-toggle">
+          What is Netflix?
+          <span class="text-2xl">+</span>
+        </button>
+        <div class="px-6 pb-5 hidden text-white">
+          Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more.
+        </div>
+      </div>
+
+      <div style="background-color: #2d2d2d;"
+      class=" rounded overflow-hidden">
+        <button class="w-full text-left px-6 py-5 text-xl font-medium flex justify-between items-center faq-toggle">
+          How much does Netflix cost?
+          <span class="text-2xl">+</span>
+        </button>
+        <div class="px-6 pb-5 hidden text-white">
+          Plans range from ₹149 to ₹649 per month. Watch on your mobile, tablet, laptop, or TV.
+        </div>
+      </div>
+
+      <div style="background-color: #2d2d2d;"
+      class=" rounded overflow-hidden">
+        <button class="w-full text-left px-6 py-5 text-xl font-medium flex justify-between items-center faq-toggle">
+          Where can I watch?
+          <span class="text-2xl">+</span>
+        </button>
+        <div class="px-6 pb-5 hidden text-white">
+          Watch anywhere, anytime — on your smartphone, tablet, smart TV, or laptop.
+        </div>
+      </div>
+
+      <div style="background-color: #2d2d2d;"
+      class="rounded overflow-hidden">
+        <button class="w-full text-left px-6 py-5 text-xl font-medium flex justify-between items-center faq-toggle">
+          How do I cancel?
+          <span class="text-2xl">+</span>
+        </button>
+        <div class="px-6 pb-5 hidden text-white">
+          Cancel your plan easily at any time online in your account settings.
+        </div>
+      </div>
+
+      <div style="background-color: #2d2d2d;"
+      class=" rounded overflow-hidden">
+        <button class="w-full text-left px-6 py-5 text-xl font-medium flex justify-between items-center faq-toggle">
+          What can I watch on Netflix?
+          <span class="text-2xl">+</span>
+        </button>
+        <div class="px-6 pb-5 hidden text-white">
+          You can watch movies, TV shows, anime, documentaries, and Netflix Originals.
+        </div>
+      </div>
+
+      <div style="background-color: #2d2d2d;"
+      class="rounded overflow-hidden">
+        <button class="w-full text-left px-6 py-5 text-xl font-medium flex justify-between items-center faq-toggle">
+          Is Netflix good for kids?
+          <span class="text-2xl">+</span>
+        </button>
+        <div class="px-6 pb-5 hidden text-white">
+          Yes, the Kids experience includes parental controls and kid-friendly content.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+
+</section>
+
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Footer -->
+  <footer class="text-center text-gray-400 text-xs sm:text-sm p-4">
+    © 2025 Netflix Clone Mini Project by Lakshmi Manogna
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

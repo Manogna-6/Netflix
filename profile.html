@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Netflix Clone – Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            netflixRed: '#E50914',
+            netflixDark: '#141414',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #141414;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+
+  <!-- Header -->
+  <div class="relative px-6 py-4 flex justify-center items-center bg-netflixDark">
+    <div class="text-3xl font-bold text-netflixRed select-none">NETFLIX</div>
+    <button title="Edit profiles" class="absolute right-6 focus:outline-none" aria-label="Edit profiles">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white transition-transform duration-200 hover:scale-110" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536M9 11l6-6 3 3-6 6H9v-3z" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Who's Watching -->
+  <h2 class="text-center text-xl md:text-2xl font-semibold mt-8 mb-10 select-none">Who's Watching?</h2>
+
+  <!-- Profiles Grid -->
+  <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 max-w-md mx-auto px-4">
+    <!-- Profile Cards -->
+    <a href="browse.html" class="flex flex-col items-center transform transition-transform duration-300 hover:scale-105">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" alt="Manu" class="w-20 sm:w-24 h-20 sm:h-24 rounded-md bg-blue-500 shadow-md" />
+      <p class="mt-2 font-semibold select-none text-white">Manu</p>
+    </a>
+
+    <a href="browse.html" class="flex flex-col items-center transform transition-transform duration-300 hover:scale-105">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" alt="Anu" class="w-20 sm:w-24 h-20 sm:h-24 rounded-md bg-purple-600 shadow-md" />
+      <p class="mt-2 font-semibold select-none text-white">Anu</p>
+    </a>
+
+    <a href="browse.html" class="flex flex-col items-center transform transition-transform duration-300 hover:scale-105">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" alt="Jaya" class="w-20 sm:w-24 h-20 sm:h-24 rounded-md bg-pink-500 shadow-md" />
+      <p class="mt-2 font-semibold select-none text-white">Jaya</p>
+    </a>
+
+    <a href="browse.html" class="flex flex-col items-center transform transition-transform duration-300 hover:scale-105">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" alt="Swetha" class="w-20 sm:w-24 h-20 sm:h-24 rounded-md bg-red-500 shadow-md" />
+      <p class="mt-2 font-semibold select-none text-white">Swetha</p>
+    </a>
+
+    <a href="browse.html" class="flex flex-col items-center transform transition-transform duration-300 hover:scale-105">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" alt="Home" class="w-20 sm:w-24 h-20 sm:h-24 rounded-md bg-green-500 shadow-md" />
+      <p class="mt-2 font-semibold select-none text-white">Home</p>
+    </a>
+
+    <a href="browse.html" class="flex flex-col items-center transform transition-transform duration-300 hover:scale-105">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png" alt="Kids" class="w-20 sm:w-24 h-20 sm:h-24 rounded-md bg-yellow-500 shadow-md" />
+      <p class="mt-2 font-semibold select-none text-white">Kids</p>
+    </a>
+  </div>
+
+</body>
+</html>
