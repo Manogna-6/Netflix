@@ -31,6 +31,40 @@ const carousel = document.getElementById("trendingCarousel");
     carousel.scrollBy({ left: -300, behavior: "smooth" });
   });
 
+
+  // modelbox 
+
+
+   const modal = document.getElementById("modal");
+  const closeModal = document.getElementById("closeModal");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalImg = document.getElementById("modalImg");
+  const modalDesc = document.getElementById("modalDesc");
+
+  document.querySelectorAll('#trendingCarousel > div').forEach((card) => {
+    card.addEventListener('click', () => {
+      const title = card.getAttribute('data-title');
+      const img = card.getAttribute('data-img');
+      const desc = card.getAttribute('data-description');
+
+      modalTitle.innerText = title;
+      modalImg.src = img;
+      modalDesc.innerText = desc;
+
+      modal.classList.remove("hidden");
+    });
+  });
+
+  closeModal.addEventListener("click", () => {
+    modal.classList.add("hidden");
+  });
+
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.classList.add("hidden");
+    }
+  });
+
 // questions
 
 
