@@ -88,3 +88,11 @@ const carousel = document.getElementById("trendingCarousel");
       window.location.href = 'broser.html';
     });
   });
+
+  //browser.html
+  
+ function toggleMobileMenu() {
+  const menu = document.getElementById("mobileMenu");
+  menu.classList.toggle("hidden");
+}
+ 
