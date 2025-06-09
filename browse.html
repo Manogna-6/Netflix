@@ -1,157 +1,116 @@
 
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Netflix Clone</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NetMirror - Streaming Platform</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      .gradient-overlay {
-        background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%);
-      }
-      .gradient-overlay-bottom {
-        background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, transparent 50%);
-      }
-      .scroll-container {
-        scroll-behavior: smooth;
-      }
-      .movie-card {
-        transition: all 0.3s ease;
-      }
-      .movie-card:hover {
-        transform: scale(1.05);
-        z-index: 20;
-      }
-      .expanded-card {
-        transition: all 0.3s ease;
-        opacity: 0;
-        visibility: hidden;
-      }
-      .movie-card:hover .expanded-card {
-        opacity: 1;
-        visibility: visible;
-      }
-    </style>
-  </head>
-  <body class="bg-black text-white">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'netflix-red': '#e50914',
+                        'netflix-dark': '#141414',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-black text-white">
+  <section>
     <!-- Header -->
-    <header id="header" class="fixed top-0 w-full z-50 transition-all duration-300">
-      <div class="flex items-center justify-between px-4 lg:px-16 py-4">
-        <!-- Logo -->
-        <div class="flex items-center space-x-8">
-          <h1 class="text-red-600 text-2xl font-bold">NETFLIX</h1>
-          
-          <!-- Desktop Navigation -->
-          <nav class="hidden lg:flex space-x-6">
-            <a href="#" class="text-white hover:text-gray-300 transition-colors">Home</a>
-            <a href="#" class="text-white hover:text-gray-300 transition-colors">TV Shows</a>
-            <a href="#" class="text-white hover:text-gray-300 transition-colors">Movies</a>
-            <a href="#" class="text-white hover:text-gray-300 transition-colors">New & Popular</a>
-            <a href="#" class="text-white hover:text-gray-300 transition-colors">My List</a>
-          </nav>
-        </div>
-             <!-- Right Side -->
-            <div class="flex items-center space-x-2">
-             <!-- Search Icon -->
-            <button class="text-white hover:bg-white/10 p-2 rounded">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </button>
+    <header class="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-black/80 to-transparent backdrop-blur-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <!-- Left: Logo -->
+      <div class="flex items-center space-x-4">
+        <img src="./assests/Netflix_text.png" alt="Netflix Logo" class="h-10" />
 
-            <!-- Bell Icon with Notification Badge -->
-            <button class="relative text-white hover:bg-white/10 p-2 rounded">
-           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-             d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C8.67 6.165 8 7.388 8 9v5.159c0 .538-.214 1.055-.595 1.436L6 17h5m0 0v1a3 3 0 006 0v-1m-6 0h6" />
-           </svg>
-           <!-- Notification Badge -->
-           <span class="absolute -top-1 -right-1 bg-red-600 text-xs text-white rounded-full w-4 h-4 flex items-center justify-center">
-            3
-          </span>
-           </button>
-
-
-          <!-- User / Profile Icon -->
-          <button class="text-white hover:bg-white/10 p-2 rounded">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-           d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-          </svg>
-          </button>
-          </div>
-
-      
-          <!-- Mobile Menu Toggle -->
-          <button id="mobile-menu-toggle" class="lg:hidden text-white hover:bg-white/10 p-2 rounded">
-            <svg id="menu-icon" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-            </svg>
-            <svg id="close-icon" class="h-5 w-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- Mobile Menu -->
-      <div id="mobile-menu" class="lg:hidden bg-black/95 backdrop-blur-sm hidden">
-        <nav class="flex flex-col space-y-4 px-4 py-6">
-          <a href="#" class="text-white hover:text-gray-300 transition-colors">Home</a>
-          <a href="#" class="text-white hover:text-gray-300 transition-colors">TV Shows</a>
-          <a href="#" class="text-white hover:text-gray-300 transition-colors">Movies</a>
-          <a href="#" class="text-white hover:text-gray-300 transition-colors">New & Popular</a>
-          <a href="#" class="text-white hover:text-gray-300 transition-colors">My List</a>
+        <!-- Desktop Nav -->
+        <nav class="hidden md:flex space-x-6">
+          <a href="#" class="text-white hover:text-red-400">Home</a>
+          <a href="#" class="text-gray-300 hover:text-white">TV Series</a>
+          <a href="#" class="text-gray-300 hover:text-white">Movies</a>
         </nav>
       </div>
-    </header>
 
-    <!-- Hero Section -->
-    <div class="relative min-h-screen">
-      <!-- Background Image -->
-      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('https://assets-in.bmscdn.com/discovery-catalog/events/et00435629-dqrmueskcc-landscape.jpg');">
-        <div class="absolute inset-0 gradient-overlay"></div>
-        <div class="absolute inset-0 gradient-overlay-bottom"></div>
+      <!-- Right: Icons -->
+      <div class="flex items-center space-x-4">
+        <!-- Hamburger for mobile -->
+        <button class="text-white md:hidden" onclick="toggleMobileMenu()">
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+
+        <!-- Search, Bell, Profile (always visible) -->
+        <button class="text-white hover:text-red-400">
+          <i class="fas fa-search text-xl"></i>
+        </button>
+        <button class="text-white hover:text-red-400 relative">
+          <i class="fas fa-bell text-xl"></i>
+          <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">3</span>
+        </button>
+        <button class="bg-red-500 text-white rounded-full w-7 h-7 flex items-center justify-center hover:bg-red-600">
+          <i class="fas fa-user text-sm"></i>
+        </button>
       </div>
+    </div>
 
+    <!-- Mobile Nav (initially hidden) -->
+    <div id="mobileMenu" class="md:hidden mt-2 hidden">
+      <a href="#" class="block text-white py-2">Home</a>
+      <a href="#" class="block text-white py-2">TV Series</a>
+      <a href="#" class="block text-white py-2">Movies</a>
+    </div>
+  </div>
+</header>
+     <section class="relative min-h-[550px] flex items-center">
+    <!-- Background -->
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFKqS3sZuPtry1eLav_kj-rNa4HPLkjvTj1A&s');">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+    </div>
     
-      <!-- Content -->
-      <div class="relative z-10 flex items-center min-h-screen px-4 top-20 lg:px-16">
-        <div class="max-w-xl space-y-6">
-          <h1 class="text-2xl lg:text-4xl font-bold text-white leading-tight">
-            Watch in Telugu, Hindi, Tamil, Malayalam, Kannada
-          </h1>
-          <p class="text-lg lg:text-xl text-gray-200 leading-relaxed">
-             College friends Manoj, Ashok and Damodar take Laddu to Goa after ruining his wedding, but soon land in much deeper trouble.
-          </p>
-          
-          <div class="flex flex-col sm:flex-row gap-4">
-            <button class="bg-white text-black hover:bg-gray-200 text-lg px-8 py-3 font-semibold rounded flex items-center justify-center">
-              <svg class="mr-2 h-5 w-5 fill-current" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-              Play
-            </button>
+    <!-- Content -->
+    <div class="absolute z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl">
+            <!-- Movie Title -->
+            <div class="mb-6">
+                <h1 class="text-4xl md:text-8xl font-black text-yellow-400 transform -rotate-2 mb-2 drop-shadow-2xl">
+                    (MAD)
+                    <span class="text-red-500 text-4xl md:text-5xl align-top">2</span>
+                </h1>
             </div>
+            
+            <!-- Language Options -->
+            <p class="text-gray-200 text-lg font-bold mb-4">
+                Watch in Telugu, Hindi, Tamil, Malayalam, Kannada
+            </p>
+            
+            <!-- Description -->
+            <p class="text-gray-300 text-lg mb-8 max-w-xl leading-relaxed">
+                College friends Manoj, Ashok and Damodar take Laddu to Goa after ruining his wedding, but soon land in much deeper trouble.
+            </p>
+            
+            <!-- Action Buttons -->
+            <div class="flex space-x-4">
+                <a href="https://youtu.be/x9jlQ0_K5Zc" target="_blank" class="flex items-center space-x-2 bg-white text-black px-8 py-3 rounded-md font-semibold hover:bg-gray-200 transition-all duration-200 transform hover:scale-105">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+                </a>
+            </div>  
         </div>
-      </div>
     </div>
-  
-  <script>
-  const toggleBtn = document.getElementById("mobile-menu-toggle");
-  const mobileMenu = document.getElementById("mobile-menu");
-  const menuIcon = document.getElementById("menu-icon");
-  const closeIcon = document.getElementById("close-icon");
+</section>  
+<script src="script.js" defer></script>     
+</body>
+</html>
 
-  toggleBtn.addEventListener("click", () => {
-    mobileMenu.classList.toggle("hidden");
-    menuIcon.classList.toggle("hidden");
-    closeIcon.classList.toggle("hidden");
-  });
-</script>
-  
   
   
   
@@ -835,525 +794,3 @@
   
   
   
-<!-- Section Heading -->
- 
-
-<!-- Romantic Korean TV Shows -->
- <section>
-  <h2 class="text-2xl font-bold text-white mb-4">Romantic Korean TV Shows</h2>
-  <div class="flex gap-4 overflow-x-scroll scrollbar-hide snap-x snap-mandatory group-hover:overflow-x-auto">
-
-
-
-  <!-- Card 1 -->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <img src="./assests/pictures/k-picture1.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-        <a href="https://youtu.be/AGF16szMOmo?si=5nwRBt-E-OQL8VkJ" target="_blank">
-      <button class="bg-red-600 hover:bg-red-700 text-white text-xs px-4 py-1 rounded shadow-md">Watch Now</button>
-      </a>
-    </div>
-  </div>
-
-  <!-- Card 2-->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <img src="./assests/pictures/k-picture2.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/Gg2D8zrzlOA?si=RXnApcb6eHjErkys" target="_blank">
-      <button class="bg-red-600 hover:bg-red-700 text-white text-xs px-4 py-1 rounded shadow-md">
-        Watch Now
-      </button>
-      </a>
-    </div>
-  </div>
-
-  <!-- Card 3-->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <img src="./assests/pictures/k-picture3.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/D-bAfFqvxZg?si=QA7oPI0kEv_U6Uir" target="_blank">
-      <button class="bg-red-600 hover:bg-red-700 text-white text-xs px-4 py-1 rounded shadow-md">
-        Watch Now
-      </button>
-      </a>
-    </div>
-  </div>
-
-  <!-- Card 4 -->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <img src="./assests/pictures/k-picture4.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/GVQGWgeVc4k?si=Xvm8Ey4P7SDY7tYO" target="_blank">
-      <button class="bg-red-600 hover:bg-red-700 text-white text-xs px-4 py-1 rounded shadow-md">
-        Watch Now
-      </button>
-      </a>
-    </div>
-  </div>
-
-  <!-- Card 5 -->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <img src="./assests/pictures/k-picture5.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/C3TpiZndAOo?si=J3WfKDzINKo3FVHC" target="_blank">
-      <button class="bg-red-600 hover:bg-red-700 text-white text-xs px-4 py-1 rounded shadow-md">
-        Watch Now
-      </button>
-      </a>
-    </div>
-  </div>
-   <!-- Card 6-->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <img src="./assests/pictures/k-picture6.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/1H__LNPCc80?si=wv60MB7yj-qlkU7X" target="_blank">
-      <button class="bg-red-600 hover:bg-red-700 text-white text-xs px-4 py-1 rounded shadow-md">
-        Watch Now
-      </button>
-         </a>
-    </div>
-  </div>
-   <!-- Card 7-->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <img src="./assests/pictures/k-picture7.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/BXTDH1Ropfo?si=JEdJ5W2ApByO1FpO" target="_blank">
-      <button class="bg-red-600 hover:bg-red-700 text-white text-xs px-4 py-1 rounded shadow-md">
-        Watch Now
-      </button>
-      </a>
-    </div>
-  </div>
-   <!-- Card 8-->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <img src="./assests/pictures/k-picture8.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/5kk0dYa8Ccc?si=AT5fepx-UD-nHLVT" target="_blank">
-      <button class="bg-red-600 hover:bg-red-700 text-white text-xs px-4 py-1 rounded shadow-md">
-        Watch Now
-      </button>
-      </a>
-    </div>
-  </div>
-   <!-- Card 9 -->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <img src="./assests/pictures/k-picture9.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/XU7-s6X5D00?si=NOoGAG9Q1rsSLlfj" target="_blank">
-      <button class="bg-red-600 hover:bg-red-700 text-white text-xs px-4 py-1 rounded shadow-md">
-        Watch Now
-      </button>
-      </a>
-    </div>
-  </div>
-   <!-- Card 10 -->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <img src="./assests/pictures/k-picture10.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/owK1nPwXNlY?si=tJXoZvv2DYhHV8h8" target="_blank">
-      <button class="bg-red-600 hover:bg-red-700 text-white text-xs px-4 py-1 rounded shadow-md">
-        Watch Now
-      </button>
-      </a>
-    </div>
-  </div>
-   <!-- Card 11 -->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <img src="./assests/pictures/picture11.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/BemKyzbLDDc?si=_APZsWTmCjVwfoc_" target="_blank">
-      <button class="bg-red-600 hover:bg-red-700 text-white text-xs px-4 py-1 rounded shadow-md">
-        Watch Now
-      </button>
-      </a>
-    </div>
-  </div>
-  <!-- Card 12 -->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <img src="./assests/pictures/k-picture12.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/B--OvWV3HFw?si=y6_qwpfkwG7LV151" target="_blank">
-      <button class="bg-red-600 hover:bg-red-700 text-white text-xs px-4 py-1 rounded shadow-md">
-        Watch Now
-      </button>
-      </a>
-    </div>
-  </div>
-  <!-- Card 13 -->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <img src="./assests/pictures/k-picture13.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/mh4R-WXRhQo?si=umpMgV0mkcUQTW1-" target="_blank">
-      <button class="bg-red-600 hover:bg-red-700 text-white text-xs px-4 py-1 rounded shadow-md">
-        Watch Now
-      </button>
-      </a>
-    </div>
-  </div>
-  <!-- Card 14 -->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <img src="./assests/pictures/k-picture14.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/f0Q6mNivUoY?si=JvoiLvUBtwx2w3yN" target="_blank">
-      <button class="bg-red-600 hover:bg-red-700 text-white text-xs px-4 py-1 rounded shadow-md">
-        Watch Now
-      </button>
-      </a>
-    </div>
-  </div>
-  <!-- Card 15 -->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <img src="./assests/pictures/k-picture15.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/jJwuFjmfjRY?si=hIaeZB-jm7eTIACG" target="_blank">
-      <button class="bg-red-600 hover:bg-red-700 text-white text-xs px-4 py-1 rounded shadow-md">
-        Watch Now
-      </button>
-      </a>
-    </div>
-  </div>
-
-</div>
-
-
-</section>
-
-
-  
-<!-- Animation -->
- <section>
-<h2 class="text-2xl font-bold text-white mb-4">Animation</h2>
-  <div class="flex gap-4 overflow-x-scroll scrollbar-hide snap-x snap-mandatory group-hover:overflow-x-auto">
-
-  <!-- Card 1 -->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-     <a href="https://youtu.be/lQneANlIxKU" target="_blank">
-    <img src="./assests/pictures/a-picture1.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-        <a href="https://youtu.be/3N1ok2_BkUw?list=PLpkA9eET-AqrHZmd4dcqhzE2DLPr4H1tH" target="_blank">
-      </a>
-    </a>
-    </div>
-  </div>
-
-  <!-- Card 2-->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <a href="https://youtu.be/nPFpdqitJIs" target="_blank">
-    <img src="./assests/pictures/a-picture2.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/1Cxjaerofpo" target="_blank">
-      </a>
-    </a>
-    </div>
-  </div>
-
-  <!-- Card 3-->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <a href="https://youtu.be/U-OKFgutac8?list=PLZ835vDW8TIxCH5gM8k54cKzqlp99Ku6F" target="_blank">
-    <img src="./assests/pictures/a-picture3.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/vPav02kVCr0?list=PLaZLZgIy7kJJqlPr-L-uRo3QcWhkIvuHZ" target="_blank">
-       </a>
-      </a>
-    </div>
-  </div>
-
-  <!-- Card 4 -->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <a href="https://youtu.be/rdiwi94HZUc" target="_blank">
-    <img src="./assests/pictures/a-picture4.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/ndUIu771eY4?list=PL40ip5RYHduh9KgfMJLxcGqKnT-LfLvIS" target="_blank">
-        </a>
-      </a>
-    </div>
-  </div>
-
-  <!-- Card 5 -->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <a href="https://youtu.be/CKJeyhJSaFg?list=PLena2SvpHGwLHx2H8N6RiFebE2GvPimbT" target="_blank">
-    <img src="./assests/pictures/a-picture5.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/TxZXSjWcR_A" target="_blank">
-        </a>
-      </a>
-    </div>
-  </div>
-   <!-- Card 6-->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <a href="https://youtu.be/DvfTJqczEgM" target="_blank">
-    <img src="./assests/pictures/a-picture6.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/FJpL1KI7ns0" target="_blank">
-        </a>
-       </a>
-    </div>
-  </div>
-   <!-- Card 7-->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <a href="https://youtu.be/zxtK1RtJVI8" target="_blank">
-    <img src="./assests/pictures/a-picture7.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/HD7Ex065cDw?list=PLjm2JK5EExq9BfbpFe5EVOZD8FQHQGmIj" target="_blank">
-       </a>
-      </a>
-    </div>
-  </div>
-   <!-- Card 8-->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <a href="https://youtu.be/sjAaHNfqYZM" target="_blank">
-    <img src="./assests/pictures/a-picture8.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/L6ezXKAsxuQ?list=PLWbzLxdD0Q7DD3I-UfENd5itYscNuUoGA" target="_blank">
-        </a>
-      </a>
-    </div>
-  </div>
-   <!-- Card 9 -->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <a href="https://youtu.be/3_vlSjKhejk" target="_blank">
-    <img src="./assests/pictures/a-picture9.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/XU7-s6X5D00?list=PL02L66IWkL_cnoc7bnKMCOZP-Y3si1LyS" target="_blank">
-        </a>
-      </a>
-    </div>
-  </div>
-   <!-- Card 10 -->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <a href="https://youtu.be/nOWawqOMa-M" target="_blank">
-    <img src="./assests/pictures/a-picture10.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/owK1nPwXNlY?list=PLEPoYg6Tp6FZ1AKovIgp7XnKRHBDS9HHo" target="_blank">
-        </a>
-      </a>
-    </div>
-  </div>
-   <!-- Card 11 -->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <a href="https://youtu.be/CzbaiEpdnY0" target="_blank">
-    <img src="./assests/pictures/a-picture11.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/l7K3swTx5wI?list=PLDRXC_BBXJ3idrr0LmyclARaJRkjh5Emf" target="_blank">
-        </a>
-      </a>
-    </div>
-  </div>
-  <!-- Card 12 -->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <a href="https://youtu.be/181-1ePkzIs" target="_blank">
-    <img src="./assests/pictures/a-picture12.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/mW2NwJQNu6k?list=PL6yNyPKvz4L7iabHHgV3P3NHlzrO88scv" target="_blank">
-        </a>
-      </a>
-    </div>
-  </div>
-  <!-- Card 13 -->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <a href="https://youtu.be/0E8wGNzkVz0?list=PLUIZaKwMm1z1VsCPfUrzGuOdmF0e-iF-Y" target="_blank">
-    <img src="./assests/pictures/a-picture13.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/xsO2rlE9wfc?list=PLSa3R1HhJ9JzsudqFM-oEWMQBdCYJ9Vps" target="_blank">
-        </a>
-      </a>
-    </div>
-  </div>
-  <!-- Card 14 -->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <a href="https://youtu.be/rx4ljqHEVQk" target="_blank">
-    <img src="./assests/pictures/a-picture14.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/eKeLK-kN_3s?list=PL9vX4w7rotK1W_7VSwFQ4h1NpYi8Ua9ho" target="_blank">
-        </a>
-      </a>
-    </div>
-  </div>
-  <!-- Card 15 -->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <a href="https://youtu.be/8GgcnGIkEIU" target="_blank">
-    <img src="./assests/pictures/a-picture15.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/XLA_uqAfbew?si=MUW-X4JPJO8CFR0h" target="_blank">
-        </a>
-      </a>
-    </div>
-  </div>
-
-</div>
-
-</section>
-
-
-<!-- watch it again -->
- <section>
-<h2 class="text-2xl font-bold text-white mb-4">Watch It Again</h2>
-  <div class="flex gap-4 overflow-x-scroll scrollbar-hide snap-x snap-mandatory group-hover:overflow-x-auto">
-
-    
-<!-- Card 1 -->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <a href="https://youtu.be/3ndiV-T2lvg" target="_blank">
-    <img src="./assests/pictures/w-picture1.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/eES65pr2POM?si=yANsXo2Ui6DyXGhz" target="_blank">
-        </a>
-      </a>
-    </div>
-  </div>
-
-  <!-- Card 2-->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <a href="https://youtu.be/lC2HnDXvZyY" target="_blank">
-    <img src="./assests/pictures/w-picture2.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/Qye2HPaiB98?si=5oVkHHXXkchfjH6q" target="_blank">
-        </a>
-      </a>
-    </div>
-  </div>
-
-  <!-- Card 3-->
- <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <a href="https://youtu.be/hs3w32RG8L8" target="_blank">
-    <img src="./assests/pictures/w-picture3.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/zMyras0t-s0?si=94C0YXrOYP0Uc3Pq" target="_blank">
-        </a>
-      </a>
-    </div>
-  </div>
-
-  <!-- Card 4 -->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <a href="https://youtu.be/3x77q40hATw" target="_blank">
-    <img src="./assests/pictures/w-picture4.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/Nl8UWRmTo2M?si=RnqTcePon2AMkf2y" target="_blank">
-        </a>
-      </a>
-    </div>
-  </div>
-
-  <!-- Card 5 -->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <a href="https://youtu.be/6RT3cB3T74w" target="_blank">
-    <img src="./assests/pictures/w-picture5.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/6RT3cB3T74w?si=8UWMn8oGvwuNbWpb" target="_blank">
-        </a>
-      </a>
-    </div>
-  </div>
-   <!-- Card 6-->
- <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <a href="https://youtu.be/m1i-sYxTX8I" target="_blank">
-    <img src="./assests/pictures/w-picture6.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/m1i-sYxTX8I?si=PqRA-Dufq6AakCFe" target="_blank">
-        </a>
-      </a>
-    </div>
-  </div>
-   <!-- Card 7-->
- <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <a href="https://youtu.be/sm8t7aW5_4s" target="_blank">
-    <img src="./assests/pictures/w-picture7.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/dyZ9fF7xLlQ?si=sNCn5ANHGPaxkZ0v" target="_blank">
-        </a>
-      </a>
-    </div>
-  </div>
-   <!-- Card 8-->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <a href="https://youtu.be/daJoED_gp8U" target="_blank">
-    <img src="./assests/pictures/w-picture8.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/b6Z_RYC8IAQ?si=XNFVobdq46QJkUWE" target="_blank">
-        </a>
-      </a>
-    </div>
-  </div>
-   <!-- Card 9 -->
- <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <a href="https://youtu.be/2m1drlOZSDw" target="_blank">
-    <img src="./assests/pictures/w-picture9.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/avz06PDqDbM?si=BEGOhk3Tj0T7wWIO" target="_blank">
-        </a>
-      </a>
-    </div>
-  </div>
-   <!-- Card 10 -->
-<div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <a href="https://youtu.be/bYopWaT8Sr0" target="_blank">
-    <img src="./assests/pictures/w-picture10.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/bYopWaT8Sr0?si=fXVNr_TguEpnhod3" target="_blank">
-        </a>
-      </a>
-    </div>
-  </div>
-   <!-- Card 11 -->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <a href="https://youtu.be/AY3Yea6hBbI" target="_blank">
-    <img src="./assests/pictures/w-picture11.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/U3aPapvUihg?si=E9Fzu0oQqJ7qfka9" target="_blank">
-        </a>
-      </a>
-    </div>
-  </div>
-  <!-- Card 12 -->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <a href="https://youtu.be/qVypNFeJYow" target="_blank">
-    <img src="./assests/pictures/w-picture12.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/mv7w4V0xn8w?si=FU8GexVmLf_Xg1uF" target="_blank">
-        </a>
-      </a>
-    </div>
-  </div>
-  <!-- Card 13 -->
- <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <a href="https://youtu.be/MV2nYw6gL_w" target="_blank">
-    <img src="./assests/pictures/w-picture13.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/MV2nYw6gL_w?si=3Bwlsiw_Ehjh_BfI" target="_blank">
-        </a>
-      </a>
-    </div>
-  </div>
-  <!-- Card 14 -->
-<div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <a href="https://youtu.be/aFPRKT7ILtk" target="_blank">
-    <img src="./assests/pictures/w-picture14.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/aFPRKT7ILtk?si=IdvOuyQcBQC0DI0w" target="_blank">
-        </a>
-      </a>
-    </div>
-  </div>
-  <!-- Card 15 -->
- <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <a href="https://youtu.be/3gC3MLUePsw" target="_blank">
-    <img src="./assests/pictures/w-picture15.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/3gC3MLUePsw?si=A63G7sI1rnD9m68K" target="_blank">
-        </a>
-      </a>
-    </div>
-  </div>
-
-</div>
-
-</section>
-
-  
-
-
-
-
-
-
