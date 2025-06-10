@@ -25,16 +25,16 @@
 <body class="bg-black text-white">
   <section>
     <!-- Header -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-black/80 to-transparent backdrop-blur-sm">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-black/80 to-transparent">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
       <!-- Left: Logo -->
-      <div class="flex items-center space-x-4">
+      <div class="w-full flex justify-start items-center space-x-4">
         <img src="./assests/Netflix_text.png" alt="Netflix Logo" class="h-10" />
 
         <!-- Desktop Nav -->
         <nav class="hidden md:flex space-x-6">
-          <a href="#" class="text-white hover:text-red-400">Home</a>
+          <a href="#" class="text-white hover:text-white">Home</a>
           <a href="#" class="text-gray-300 hover:text-white">TV Series</a>
           <a href="#" class="text-gray-300 hover:text-white">Movies</a>
         </nav>
@@ -48,14 +48,14 @@
         </button>
 
         <!-- Search, Bell, Profile (always visible) -->
-        <button class="text-white hover:text-red-400">
+        <button class="text-white flex justify-end items-center">
           <i class="fas fa-search text-xl"></i>
         </button>
-        <button class="text-white hover:text-red-400 relative">
+        <button class="text-white relative">
           <i class="fas fa-bell text-xl"></i>
           <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">3</span>
         </button>
-        <button class="bg-red-500 text-white rounded-full w-7 h-7 flex items-center justify-center hover:bg-red-600">
+        <button class="bg-red-500 text-white rounded-full w-7 h-7 flex items-center justify-center ">
           <i class="fas fa-user text-sm"></i>
         </button>
       </div>
@@ -69,43 +69,36 @@
     </div>
   </div>
 </header>
-     <section class="relative min-h-[550px] flex items-center">
-    <!-- Background -->
-    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFKqS3sZuPtry1eLav_kj-rNa4HPLkjvTj1A&s');">
+      <section class="relative h-[580px] flex items-end ">
+    <!-- Background Image -->
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://assets-in.bmscdn.com/discovery-catalog/events/et00435629-dqrmueskcc-landscape.jpg');">
         <div class="absolute inset-0 bg-black/40"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
     </div>
-    
-    <!-- Content -->
-    <div class="absolute z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Text Content Positioned at Bottom -->
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
         <div class="max-w-2xl">
-            <!-- Movie Title -->
-            <div class="mb-6">
-                <h1 class="text-4xl md:text-8xl font-black text-yellow-400 transform -rotate-2 mb-2 drop-shadow-2xl">
-                    (MAD)
-                    <span class="text-red-500 text-4xl md:text-5xl align-top">2</span>
-                </h1>
-            </div>
-            
             <!-- Language Options -->
             <p class="text-gray-200 text-lg font-bold mb-4">
                 Watch in Telugu, Hindi, Tamil, Malayalam, Kannada
             </p>
-            
+
             <!-- Description -->
             <p class="text-gray-300 text-lg mb-8 max-w-xl leading-relaxed">
                 College friends Manoj, Ashok and Damodar take Laddu to Goa after ruining his wedding, but soon land in much deeper trouble.
             </p>
-            
+
             <!-- Action Buttons -->
             <div class="flex space-x-4">
                 <a href="https://youtu.be/x9jlQ0_K5Zc" target="_blank" class="flex items-center space-x-2 bg-white text-black px-8 py-3 rounded-md font-semibold hover:bg-gray-200 transition-all duration-200 transform hover:scale-105">
-                <i class="fas fa-play"></i>
-                <span>Play</span>
+                    <i class="fas fa-play"></i>
+                    <span>Play</span>
                 </a>
-            </div>  
+            </div>
         </div>
     </div>
+</section>
+
 </section>  
 <script src="script.js" defer></script>     
 </body>
