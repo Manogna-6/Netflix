@@ -9,10 +9,12 @@
 
 
 
-    /* browser  */
-
+    /* Browser page */
+body {
+    overflow-x: hidden;
+    overflow-y: visible;
+  }
     
-
   .scroll-container {
   overflow-x: auto;
   overflow-y: visible;
@@ -36,7 +38,7 @@
       overflow: visible;
       cursor: pointer;
       transition: transform 0.3s ease;
-      /* z-index: 20; */
+      
     }
     .moviecard {
       width: 100%;
@@ -98,9 +100,9 @@
       z-index: 5;
     }
 
-    body {
-    overflow-x: hidden;
-    overflow-y: visible;
-  }
-  
+   
     
+  
+
+    
+   
