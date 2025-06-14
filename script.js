@@ -95,4 +95,14 @@ const carousel = document.getElementById("trendingCarousel");
   const menu = document.getElementById("mobileMenu");
   menu.classList.toggle("hidden");
 }
+
+ //carousel for Romantic Korean TV Shows
+  function scrollCarousel(direction) {
+    const carousel = document.getElementById('carousel');
+    const scrollAmount = 320; // Scroll 1 card (width + margin)
+    carousel.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+  }
+
+
+
  

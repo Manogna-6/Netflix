@@ -81,7 +81,7 @@
 </header>
       <section class="relative h-[580px] flex items-end ">
     <!-- Background Image -->
-    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://assets-in.bmscdn.com/discovery-catalog/events/et00435629-dqrmueskcc-landscape.jpg');">
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://assets-in.bmscdn.com/discovery-catalog/events/et00435629-dqrmueskcc-landscape.jpg'); ">
         <div class="absolute inset-0 bg-black/40"></div>
     </div>
 
@@ -185,11 +185,18 @@
  
 
 <!-- Romantic Korean TV Shows -->
-<section>
+<section class="relative">
 <h2 class="text-2xl font-bold text-white mb-4 ">Romantic Korean TV Shows</h2>
-  <div class="flex gap-4 snap-x snap-mandatory overflow-x-auto no-scrollbar ">
+<!-- Carousel Wrapper -->
+  <div class="relative">
 
-
+<!-- Left Arrow Button -->
+  <button onclick="scrollCarousel(-1)" class="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 p-2 rounded-full text-white">
+    &#10094;
+  </button>
+  <!-- Carousel Container -->
+  <div id="carousel" class="flex gap-4 snap-x snap-mandatory overflow-x-auto scroll-smooth no-scrollbar px-10 pb-4">
+    
   <!-- Card 1 -->
   <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
     <img src="./assests/pictures/k-picture1.jpg" class="w-full h-full object-cover" />
@@ -359,6 +366,10 @@
   </div>
 
 </div>
+ <!-- Right Arrow Button -->
+  <button onclick="scrollCarousel(1)" class="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 p-2 rounded-full text-white">
+    &#10095;
+  </button>
 </section>
 
 
