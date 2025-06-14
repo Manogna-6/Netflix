@@ -96,7 +96,6 @@ const carousel = document.getElementById("trendingCarousel");
   menu.classList.toggle("hidden");
 }
 
-
  //carousel for Romantic Korean TV Shows
   function scrollCarousel(direction) {
     const carousel = document.getElementById('carousel');
@@ -107,4 +106,3 @@ const carousel = document.getElementById("trendingCarousel");
 
 
  
-
