@@ -96,3 +96,6 @@ const carousel = document.getElementById("trendingCarousel");
   menu.classList.toggle("hidden");
 }
  
+
+
+    
