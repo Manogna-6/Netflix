@@ -21,13 +21,35 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
-    .no-scrollbar::-webkit-scrollbar {
+    
+   .no-scrollbar::-webkit-scrollbar {
       display: none;
     }
     .no-scrollbar {
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
+   .triangle-btn {
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 10px solid #dc2626;
+      cursor: pointer;
+    }
+
+     /* .hover-preview {
+    display: none;
+  }
+
+  .card-container:hover .hover-preview {
+    display: block;
+  } */
+/* 
+ .card-row {
+      overflow: visible !important;
+    } */
+
   </style>
    
 </head>
@@ -116,200 +138,539 @@
  
 
 <!-- Romantic Korean TV Shows -->
-<section class="relative">
-<h2 class="text-2xl font-bold text-white mb-4 ">Romantic Korean TV Shows</h2>
-<!-- Carousel Wrapper -->
-<div class="relative">
+ 
 
-  <!-- Left Arrow Button -->
-  <button onclick="scrollCarousel(-1)" class="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 p-2 rounded-full text-white">
+  <h2 class="text-2xl font-bold mb-6 p-4">Romantic Korean TV Shows</h2>
+
+ 
+  <!-- <div id="fullModal" class="fixed inset-0 bg-black bg-opacity-90 z-[90] hidden flex items-center justify-center">
+    <div class="bg-zinc-900 rounded-lg max-w-2xl w-full p-6 relative">
+      <button onclick="closeModal()" class="absolute top-2 right-2 text-white text-2xl">&times;</button>
+      <img src="./assests/pictures/k-picture1.jpg" alt="Details" class="w-full rounded-md mb-4" />
+      <h3 class="text-xl font-bold mb-2">King the Land </h3>
+      <div class="flex gap-2 text-sm text-gray-300 mb-2">
+        <span class="border border-white px-2 py-0.5 rounded">2023</span>
+        <span class="border border-white px-2 py-0.5 rounded">U/A 16+</span>
+        <span class="border border-white px-2 py-0.5 rounded">Movie</span>
+        <span class="border border-white px-2 py-0.5 rounded">Drama</span>
+        <span class="border border-white px-2 py-0.5 rounded">Action</span>
+      </div>
+      <p class="text-gray-300 mb-4">
+       Gu Won, heir to the King Group, and Cheon Sa-rang, a bright hotelier, find themselves in a love-hate relationship at the elite "King Hotel." What starts as clashes of status and pride slowly unfolds into unexpected romance and healing.
+      </p>
+      <button onclick="playYouTube()" class="bg-red-600 px-4 py-2 rounded text-white">Get Started</button>
+    </div>
+  </div>
+
+ 
+  <div id="videoPlayer" class="fixed inset-0 bg-black bg-opacity-95 z-[100] hidden flex items-center justify-center">
+    <div class="relative max-w-3xl w-full px-4">
+      <button onclick="closeYouTube()" class="absolute top-2 right-2 text-white text-3xl">&times;</button>
+      <div class="aspect-video w-full">
+        <iframe id="youtubeIframe" class="w-full h-full rounded-lg"
+          src=""
+          title="YouTube video"
+          frameborder="0"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex gap-6 flex-wrap p-4">
+
+    <div class="relative group w-[300px] h-[170px] transition-all duration-300">
+      <img
+        src="./assests/pictures/k-picture1.jpg"
+        alt="K-Drama"
+        class="w-full h-full object-cover rounded-lg transition-all duration-300 transform group-hover:-translate-y-6 group-hover:scale-110 z-10 relative"
+      />
+
+      <div
+        class="absolute z-50 left-0 top-[-150px] w-[420px] h-[300px] bg-zinc-900 rounded-lg shadow-2xl scale-0 group-hover:scale-100 origin-bottom-left transition-transform duration-300 ease-in-out overflow-visible"
+      >
+        <img src="./assests/pictures/k-picture1.jpg" class="w-full h-[200px] object-cover rounded-t-lg" alt="Preview" />
+
+        <div class="p-4 space-y-2" style="background-color: black;">
+          <div class="flex justify-between items-center">
+            <div class="flex gap-2">
+              <button onclick="playYouTube()" class="bg-white text-black p-2 rounded-full">&#9658;</button>
+              <button class="bg-neutral-700 p-2 rounded-full">+</button>
+              <button class="bg-neutral-700 p-2 rounded-full">&#x1F4E5;</button>
+            </div>
+            <button onclick="openModal()" class="bg-neutral-700 p-2 rounded-full">&#x25BC;</button>
+          </div>
+
+          <div class="text-sm flex gap-3 items-center flex-wrap">
+            <span class="text-green-400 font-bold">91% Match</span>
+            <span class="border border-white px-1 text-xs">U/A 16+</span>
+            <span>1 Season</span>
+            <span class="text-xs border border-gray-500 px-1">HD</span>
+          </div>
+
+          <div class="text-gray-400 text-sm">Romance • Drama • Comedy</div>
+        </div>
+      </div>
+    </div>
+  </div>
+ -->
+
+<div class="relative px-4">
+  <!-- Left Button -->
+  <button id="leftBtn" class="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-80">
     &#10094;
   </button>
-  <!-- Carousel Container -->
-  <div id="carousel" class="flex gap-4 snap-x snap-mandatory overflow-x-auto scroll-smooth no-scrollbar px-10 pb-4">
 
+  <!-- Scrollable Carousel Wrapper -->
+  <div id="carouselWrapper" class="overflow-x-auto no-scrollbar scroll-smooth">
+    <div id="carousel" class="flex gap-6 w-max px-10">
+      <!-- 15 Cards with unique data-id -->
+      <!-- Example repeated cards (replace with real data if needed) -->
+      <div class="card relative w-[250px] h-[140px] cursor-pointer" data-id="0">
+        <img src="./assests/pictures/k-picture1.jpg"
+             class="w-full h-full object-cover rounded-lg" />
+      </div>
+      <!-- Repeat this block for data-id="1" to data-id="14" -->
 
-  <!-- Card 1 -->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <img src="./assests/pictures/k-picture1.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-        <a href="https://youtu.be/AGF16szMOmo?si=5nwRBt-E-OQL8VkJ" target="_blank">
-      <button class="bg-red-600 hover:bg-red-700 text-white text-xs px-4 py-1 rounded shadow-md">Watch Now</button>
-      </a>
-    </div>
-  </div>
+        <div class="card relative w-[250px] h-[140px] cursor-pointer" data-id="1">
+        <img src="./assests/pictures/k-picture2.jpg"
+             class="w-full h-full object-cover rounded-lg" />
+      </div>
 
-  <!-- Card 2-->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <img src="./assests/pictures/k-picture2.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/Gg2D8zrzlOA?si=RXnApcb6eHjErkys" target="_blank">
-      <button class="bg-red-600 hover:bg-red-700 text-white text-xs px-4 py-1 rounded shadow-md">
-        Watch Now
-      </button>
-      </a>
-    </div>
-  </div>
+        <div class="card relative w-[250px] h-[140px] cursor-pointer" data-id="2">
+        <img src="./assests/pictures/k-picture3.jpg"
+             class="w-full h-full object-cover rounded-lg" />
+      </div>
 
-  <!-- Card 3-->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <img src="./assests/pictures/k-picture3.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/D-bAfFqvxZg?si=QA7oPI0kEv_U6Uir" target="_blank">
-      <button class="bg-red-600 hover:bg-red-700 text-white text-xs px-4 py-1 rounded shadow-md">
-        Watch Now
-      </button>
-      </a>
-    </div>
-  </div>
+        <div class="card relative w-[250px] h-[140px] cursor-pointer" data-id="3">
+        <img src="./assests/pictures/k-picture4.jpg"
+             class="w-full h-full object-cover rounded-lg" />
+      </div>
 
-  <!-- Card 4 -->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <img src="./assests/pictures/k-picture4.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/GVQGWgeVc4k?si=Xvm8Ey4P7SDY7tYO" target="_blank">
-      <button class="bg-red-600 hover:bg-red-700 text-white text-xs px-4 py-1 rounded shadow-md">
-        Watch Now
-      </button>
-      </a>
-    </div>
-  </div>
+        <div class="card relative w-[250px] h-[140px] cursor-pointer" data-id="4">
+        <img src="./assests/pictures/k-picture5.jpg"
+             class="w-full h-full object-cover rounded-lg" />
+      </div>
 
-  <!-- Card 5 -->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <img src="./assests/pictures/k-picture5.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/C3TpiZndAOo?si=J3WfKDzINKo3FVHC" target="_blank">
-      <button class="bg-red-600 hover:bg-red-700 text-white text-xs px-4 py-1 rounded shadow-md">
-        Watch Now
-      </button>
-      </a>
-    </div>
-  </div>
-   <!-- Card 6-->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <img src="./assests/pictures/k-picture6.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/1H__LNPCc80?si=wv60MB7yj-qlkU7X" target="_blank">
-      <button class="bg-red-600 hover:bg-red-700 text-white text-xs px-4 py-1 rounded shadow-md">
-        Watch Now
-      </button>
-         </a>
-    </div>
-  </div>
-   <!-- Card 7-->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <img src="./assests/pictures/k-picture7.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/BXTDH1Ropfo?si=JEdJ5W2ApByO1FpO" target="_blank">
-      <button class="bg-red-600 hover:bg-red-700 text-white text-xs px-4 py-1 rounded shadow-md">
-        Watch Now
-      </button>
-      </a>
-    </div>
-  </div>
-   <!-- Card 8-->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <img src="./assests/pictures/k-picture8.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/5kk0dYa8Ccc?si=AT5fepx-UD-nHLVT" target="_blank">
-      <button class="bg-red-600 hover:bg-red-700 text-white text-xs px-4 py-1 rounded shadow-md">
-        Watch Now
-      </button>
-      </a>
-    </div>
-  </div>
-   <!-- Card 9 -->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <img src="./assests/pictures/k-picture9.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/XU7-s6X5D00?si=NOoGAG9Q1rsSLlfj" target="_blank">
-      <button class="bg-red-600 hover:bg-red-700 text-white text-xs px-4 py-1 rounded shadow-md">
-        Watch Now
-      </button>
-      </a>
-    </div>
-  </div>
-   <!-- Card 10 -->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <img src="./assests/pictures/k-picture10.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/owK1nPwXNlY?si=tJXoZvv2DYhHV8h8" target="_blank">
-      <button class="bg-red-600 hover:bg-red-700 text-white text-xs px-4 py-1 rounded shadow-md">
-        Watch Now
-      </button>
-      </a>
-    </div>
-  </div>
-   <!-- Card 11 -->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <img src="./assests/pictures/picture11.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/BemKyzbLDDc?si=_APZsWTmCjVwfoc_" target="_blank">
-      <button class="bg-red-600 hover:bg-red-700 text-white text-xs px-4 py-1 rounded shadow-md">
-        Watch Now
-      </button>
-      </a>
-    </div>
-  </div>
-  <!-- Card 12 -->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <img src="./assests/pictures/k-picture12.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/B--OvWV3HFw?si=y6_qwpfkwG7LV151" target="_blank">
-      <button class="bg-red-600 hover:bg-red-700 text-white text-xs px-4 py-1 rounded shadow-md">
-        Watch Now
-      </button>
-      </a>
-    </div>
-  </div>
-  <!-- Card 13 -->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <img src="./assests/pictures/k-picture13.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/mh4R-WXRhQo?si=umpMgV0mkcUQTW1-" target="_blank">
-      <button class="bg-red-600 hover:bg-red-700 text-white text-xs px-4 py-1 rounded shadow-md">
-        Watch Now
-      </button>
-      </a>
-    </div>
-  </div>
-  <!-- Card 14 -->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <img src="./assests/pictures/k-picture14.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/f0Q6mNivUoY?si=JvoiLvUBtwx2w3yN" target="_blank">
-      <button class="bg-red-600 hover:bg-red-700 text-white text-xs px-4 py-1 rounded shadow-md">
-        Watch Now
-      </button>
-      </a>
-    </div>
-  </div>
-  <!-- Card 15 -->
-  <div class="flex-shrink-0 w-[300px] h-[170px] bg-gray-900 relative hover:scale-105 transition-transform duration-300 overflow-hidden">
-    <img src="./assests/pictures/k-picture15.jpg" class="w-full h-full object-cover" />
-    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-         <a href="https://youtu.be/jJwuFjmfjRY?si=hIaeZB-jm7eTIACG" target="_blank">
-      <button class="bg-red-600 hover:bg-red-700 text-white text-xs px-4 py-1 rounded shadow-md">
-        Watch Now
-      </button>
-      </a>
+        <div class="card relative w-[250px] h-[140px] cursor-pointer" data-id="5">
+        <img src="./assests/pictures/k-picture6.jpg"
+             class="w-full h-full object-cover rounded-lg" />
+      </div>
+
+        <div class="card relative w-[250px] h-[140px] cursor-pointer" data-id="6">
+        <img src="./assests/pictures/k-picture7.jpg"
+             class="w-full h-full object-cover rounded-lg" />
+      </div>
+
+        <div class="card relative w-[250px] h-[140px] cursor-pointer" data-id="7">
+        <img src="./assests/pictures/k-picture8.jpg"
+             class="w-full h-full object-cover rounded-lg" />
+      </div>
+
+        <div class="card relative w-[250px] h-[140px] cursor-pointer" data-id="8">
+        <img src="./assests/pictures/k-picture9.jpg"
+             class="w-full h-full object-cover rounded-lg" />
+      </div>
+
+        <div class="card relative w-[250px] h-[140px] cursor-pointer" data-id="9">
+        <img src="./assests/pictures/k-picture10.jpg"
+             class="w-full h-full object-cover rounded-lg" />
+      </div>
+
+        <div class="card relative w-[250px] h-[140px] cursor-pointer" data-id="10">
+        <img src="./assests/pictures/k-picture15.jpg"
+             class="w-full h-full object-cover rounded-lg" />
+      </div>
+
+        <div class="card relative w-[250px] h-[140px] cursor-pointer" data-id="11">
+        <img src="./assests/pictures/k-picture12.jpg"
+             class="w-full h-full object-cover rounded-lg" />
+      </div>
+
+        <div class="card relative w-[250px] h-[140px] cursor-pointer" data-id="12">
+        <img src="./assests/pictures/k-picture13.jpg"
+             class="w-full h-full object-cover rounded-lg" />
+      </div>
+
+        <div class="card relative w-[250px] h-[140px] cursor-pointer" data-id="13">
+        <img src="./assests/pictures/k-picture14.jpg"
+             class="w-full h-full object-cover rounded-lg" />
+      </div>
+ <!-- <div class="card relative w-[250px] h-[140px] cursor-pointer" data-id="14">
+        <img src="./assests/pictures/k-picture15.jpg"
+             class="w-full h-full object-cover rounded-lg" />
+      </div> -->
+      
+      <!-- ... -->
     </div>
   </div>
 
-</div>
- <!-- Right Arrow Button -->
-  <button onclick="scrollCarousel(1)" class="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 p-2 rounded-full text-white">
+  <!-- Right Button -->
+  <button id="rightBtn" class="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-80">
     &#10095;
   </button>
-</section> 
+</div>
+
+
+  <!-- Hover Modal -->
+
+  <div id="hoverModal" class="hidden absolute bg-zinc-900 rounded-lg shadow-lg z-40">
+    <img id="hoverImage" src="" class="w-full h-[180px] object-cover rounded-t-lg"/>
+    <div class="p-3">
+      <div class="flex gap-2 mb-2 items-center">
+        <button id="playHover" class="bg-white text-black text-sm px-3 py-1 rounded flex items-center">
+          &#9658; <span class="ml-1">Play</span>
+        </button>
+        <button class="bg-neutral-700 text-sm px-3 py-1 rounded">+</button>
+        <button class="bg-neutral-700 text-sm px-3 py-1 rounded">&#x1F4E5;</button>
+        <div id="triangle" class="triangle-btn"></div>
+      </div>
+      <div class="text-xs text-gray-300 mb-1">
+        <span class="text-green-400 font-semibold">90% match</span>
+        <span>U/A 16+</span>
+        <span>2h 45m</span>
+        <span>HD</span>
+      </div>
+      <div class="text-xs text-gray-400">Drama • Western</div>
+    </div>
+  </div>
+
+  <!-- Big Info Modal -->
+
+  <div id="infoModal" class="hidden fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50">
+    <div class="bg-zinc-900 rounded-lg p-4 max-w-md w-full relative">
+      <button id="closeInfo" class="absolute top-2 right-2 text-2xl">&times;</button>
+      <img id="infoImage" src="" class="w-full rounded mb-3"/>
+      <h3 id="infoTitle" class="text-xl font-bold mb-2"></h3>
+      <div id="infoTags" class="flex flex-wrap gap-2 text-xs mb-2"></div>
+      <p id="infoDesc" class="text-sm text-gray-300 mb-4"></p>
+      <button id="getStarted" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded">Get Started</button>
+    </div>
+  </div>
+
+  <!-- YouTube Modal -->
+
+  <div id="ytModal" class="hidden fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center">
+    <div class="relative w-full max-w-3xl">
+      <button id="closeYT" class="absolute -top-10 right-0 text-3xl">&times;</button>
+      <div class="aspect-video">
+        <iframe id="ytFrame" class="w-full h-full rounded-lg" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+      </div>
+    </div>
+  </div>
+
+
 
 <!-- Animation -->
 <div id="videoSections" class="py-10"></div>
 
 
-
 <script>
+ 
+ const cards = document.querySelectorAll(".card");
+
+// Example array of shows (15 shows)
+const shows = [
+  {
+    title: "King the Land ",
+    image: "./assests/pictures/k-picture1.jpg",
+    year: "2023",
+   rating: "U/A 13+",
+    type: "Movie",
+    genre: ["Romantic", " Comedy"],
+    desc: "Goo Won (Lee Jun‑ho) is the polished heir and general manager of the luxury King Hotel, heir to the powerful King Group. He’s embroiled in a tense inheritance battle and harbors a deep dislike for smiles. Cheon Sa‑rang (Im Yoon‑ah) works at the same hotel, known for her perpetually cheerful demeanor. Their worlds collide when he’s assigned to her department—they clash at first, but sparks quickly follow as romance blooms between opposites.",
+    youtubeId: "https://www.youtube.com/embed/AGF16szMOmo?autoplay=1"
+  },
+  {
+    title: "Queen of Tears",
+    image: "./assests/pictures/k-picture2.jpg",
+    year: "2024",
+    rating: "U/A 16+",
+    type: "Movie",
+    genre: ["Melodrama", "Romantic Comedy"],
+    desc: "Once a glamorous couple of the century, Hae-in and Hyun-woo’s marriage has become rocky after three years. When Hae-in is diagnosed with brain cancer, Hyun-woo initially contemplates divorce—but as crisis unfolds, he begins rediscovering love and regret. Secrets emerge, family betrayals threaten them, and their relationship is tested to the limits.",
+    youtubeId: "https://www.youtube.com/embed/Gg2D8zrzlOA?autoplay=1"
+  },
+  {
+     title: "My Demon",
+    image: "./assests/pictures/k-picture3.jpg",
+    year: "2023 ",
+ rating: "U/A 13+",
+    type: "Movie",
+    genre: ["Fantasy ", "Romantic Comedy"],
+    desc: "Do Do‑hee, the heiress of Future Group, meets the cold demon Jeong Gu‑won in a dramatic turn of events. When Gu‑won inexplicably loses his powers, he enters a contract marriage with Do‑hee to reclaim them — yet both soon discover that their arrangement might have deeper emotional stakes than either anticipated. As past lives, family schemes, and dark secrets emerge, their bond evolves into a romantic journey fraught with danger and destiny.",
+    youtubeId: "https://www.youtube.com/embed/D-bAfFqvxZg?autoplay=1"
+  },
+  {
+     title: "Crash Landing On You",
+    image: "./assests/pictures/k-picture4.jpg",
+    year: "2019 ",
+  rating: "U/A 13+",
+    type: "Movie",
+    genre: [" Romantic Comedy", "Drama with political intrigue"],
+    desc: "Se-ri’s routine paragliding trip is derailed by a freak wind, landing her in North Korea, where she’s found by Captain Ri. Under threat from the State Security Department, his unit hides her and uses the ruse that she’s his fiancée. Amid the danger and cultural divide, the two fall in love. Later, Se-ri returns south but the tension escalates as enemies and political conflicts follow. Their only window to reunite is a yearly meeting in Switzerland—where their love story began.",
+    youtubeId: "https://www.youtube.com/embed/GVQGWgeVc4k?autoplay=1"
+  },
+  {
+     title: "Love Next Door",
+    image: "./assests/pictures/k-picture5.jpg",
+    year: "2024 ",
+    rating: "U/A 13+",
+    type: "Movie",
+    genre: ["Romantic Comedy", "Slice of Life"],
+    desc: "Bae Seok‑ryu unexpectedly returns to South Korea after calling off her engagement and quitting a high-profile job abroad. She reunites with Choi Seung‑hyo, her childhood neighbor and former friends—linked by a childhood incident caused by their mothers. As they rekindle their dynamic, the story explores second chances, family friction, and emotional healing in their 30s.",
+    youtubeId: "https://www.youtube.com/embed/C3TpiZndAOo?si=BLPD0qXRcYFmnuXJ"
+  },
+  {
+     title: "Its Okay to Not Be Okay",
+    image: "./assests/pictures/k-picture6.jpg",
+    year: "2020 ",
+   rating: "U/A 13+",
+    type: "Movie",
+    genre: ["Healing Romance", "Fantasy‑like Psychological Drama"],
+    desc: "This emotionally rich Korean drama follows Moon Gang-tae, a selfless psychiatric caregiver, and Ko Moon-young, a bestselling children’s book author with antisocial personality disorder. Haunted by childhood trauma, both are emotionally wounded yet deeply drawn to one another.",
+    youtubeId:"https://www.youtube.com/embed/u8GU1Hf4jPw?si=l9QStykPxQegCStT"
+  },
+  {
+     title: "Destined with You",
+    image: "./assests/pictures/k-picture7.jpg",
+    year: "2023",
+    rating: "U/A 13+",
+    type: "Movie",
+    genre: ["Fantasy ", "Fantasy ", "Drama"],
+    desc: "A 300-year-old forbidden book is discovered by a civil servant, Lee Hong-jo (Jo Bo-ah), who unintentionally becomes the key to breaking a centuries-old curse that binds the successful yet troubled lawyer Jang Shin-yu (Rowoon). As destiny brings them closer, their past lives, magical interference, and growing affection collide.",
+    youtubeId: "https://www.youtube.com/embed/BXTDH1Ropfo?si=P9ZtTwitt1FdgZdo"
+  },
+  {
+     title: "Lovely Runner",
+    image: "./assests/pictures/k-picture8.jpg",
+    year: "2012",
+    rating: "U/A 13+",
+    type: "Movie",
+    genre: ["Romance ", "Time Travel"],
+    desc: "When devoted fan Im Sol discovers the tragic death of her favorite idol Ryu Sun-jae, she’s transported back in time to his high school days. Armed with knowledge of the future, she tries to change fate — but saving Sun-jae may come with consequences she never expected.",
+    youtubeId: "https://www.youtube.com/embed/5kk0dYa8Ccc?si=Tx_H10Xu9XGPvP-S"
+  },
+   {
+     title: "Young Lady and Gentleman",
+    image: "./assests/pictures/k-picture9.jpg",
+    year: "2012",
+    rating: "A",
+    type: "Movie",
+    genre: ["Romance ", "Drama " , "Family"],
+    desc: "Lee Young-guk, a wealthy widower with three children, hires live-in tutor Park Dan-dan. Despite their age gap and differences, their bond deepens, triggering opposition, family drama, and unexpected twists as they navigate love, responsibility, and past secrets.",
+    youtubeId: "https://www.youtube.com/embed/3vOTb0lnQnU?si=D42lyqV62tFrNkHn"
+  },
+   {
+     title: "Love in the Moonlight ",
+    image: "./assests/pictures/k-picture10.jpg",
+    year: "2012",
+    rating: "A",
+    type: "Movie",
+    genre: ["Romance ", "Historical ", " Coming-of-age"],
+    desc: "Set in the Joseon Dynasty, a young woman named Hong Ra-on disguises herself as a man and ends up becoming a eunuch in the royal palace. She crosses paths with Crown Prince Lee Yeong — leading to a romantic, humorous, and touching love story full of palace intrigue and identity twists.",
+    youtubeId: "https://www.youtube.com/embed/-Yfv8T3rChs?si=j_rZeoT1UfBPpJRQ"
+  },
+
+  {
+     title: "The King : Eternal Monarch",
+    image: "./assests/pictures/k-picture15.jpg",
+   year: "2008",
+    rating: "U/A 13+",
+  type: "TV Show",
+    genre: ["Romance ", "Drama ", "Family"],
+    desc: "Jang Sae-byuk, a bright and optimistic young woman, receives a second chance at life after an eye transplant. As she tries to repay her donor’s family and rebuild her future, she finds herself entangled in love, career aspirations, and unexpected family secrets.",
+    youtubeId: "https://www.youtube.com/embed/BQ33hhvAD9o?si=SM5VGzphrLnviyA0"
+  },
+  
+   {
+     title: "Forecasting Love and Weather",
+    image: "./assests/pictures/k-picture12.jpg",
+   year: "2022",
+  rating: "U/A 16+",
+  type: "TV Show",
+  genre: ["Romance", "Drama", "Workplace"],
+  desc: "Inside Korea’s national weather service, forecasters try to predict the skies — but their love lives are harder to forecast. Jin Ha-kyung, a cold and professional forecaster, unexpectedly finds herself falling for Lee Si-woo, a free-spirited colleague. Together, they navigate the unpredictability of both love and weather.",
+    youtubeId: "0fUCuvNlOCg"
+  },
+   {
+     title: "Business Proposal ",
+    image: "./assests/pictures/k-picture13.jpg",
+    year: "2022",
+  rating: "U/A 13+",
+  type: "TV Show",
+  genre: ["Romantic Comedy", "Office", "Drama"],
+    desc: "Shin Ha-ri, a food researcher, goes on a blind date posing as her friend — only to discover that the man across the table is her company’s CEO, Kang Tae-moo. What begins as a contract dating situation soon leads to hilarious misunderstandings, hidden feelings, and charming romantic tension.",
+    youtubeId: "https://www.youtube.com/embed/mh4R-WXRhQo?si=ZHKZ60dsHgcoO94t"
+  },
+   {
+     title: "You Are My Destiny",
+    image: "./assests/pictures/k-picture14.jpg",
+    year: "2008",
+    rating: "U/A 13+",
+  type: "TV Show",
+    genre: ["Romance ", "Drama ", "Family"],
+    desc: "Jang Sae-byuk, a bright and optimistic young woman, receives a second chance at life after an eye transplant. As she tries to repay her donor’s family and rebuild her future, she finds herself entangled in love, career aspirations, and unexpected family secrets.",
+    youtubeId: "https://www.youtube.com/embed/BQ33hhvAD9o?si=SM5VGzphrLnviyA0"
+  },
+  //  {
+  //    title: "The King : Eternal Monarch",
+  //    image: "./assests/pictures/k-picture14.jpg",
+  //   year: "2008",
+  //   rating: "U/A 13+",
+  // type: "TV Show",
+  //   genre: ["Romance ", "Drama ", "Family"],
+  //   desc: "Jang Sae-byuk, a bright and optimistic young woman, receives a second chance at life after an eye transplant. As she tries to repay her donor’s family and rebuild her future, she finds herself entangled in love, career aspirations, and unexpected family secrets.",
+  //   youtubeId: "https://www.youtube.com/embed/BQ33hhvAD9o?si=SM5VGzphrLnviyA0"
+  // },
+  // Add up to 15 entries
+];
+const card = document.querySelectorAll(".card");
+const hoverModal = document.getElementById("hoverModal");
+const hoverImage = document.getElementById("hoverImage");
+const triangle = document.getElementById("triangle");
+
+const infoModal = document.getElementById("infoModal");
+const infoImage = document.getElementById("infoImage");
+const infoTitle = document.getElementById("infoTitle");
+const infoTags = document.getElementById("infoTags");
+const infoDesc = document.getElementById("infoDesc");
+const closeInfo = document.getElementById("closeInfo");
+
+const playHover = document.getElementById("playHover");
+const getStarted = document.getElementById("getStarted");
+
+const ytModal = document.getElementById("ytModal");
+const ytFrame = document.getElementById("ytFrame");
+const closeYT = document.getElementById("closeYT");
+
+const leftBtn = document.getElementById("leftBtn");
+const rightBtn = document.getElementById("rightBtn");
+const carouselWrapper = document.getElementById("carouselWrapper");
+
+// 🎯 Helper: Extract YouTube Video ID from various formats
+function extractYouTubeId(urlOrId) {
+  if (/^[a-zA-Z0-9_-]{11}$/.test(urlOrId)) return urlOrId;
+  const match = urlOrId.match(/(?:youtu\.be\/|watch\?v=|embed\/|v=|shorts\/)([a-zA-Z0-9_-]{11})/);
+  return match ? match[1] : null;
+}
+
+// 🖱 Hover logic
+cards.forEach(card => {
+  const id = parseInt(card.dataset.id);
+
+  card.addEventListener("mouseenter", () => {
+    const show = shows[id];
+    hoverImage.src = show.image;
+
+    const rect = card.getBoundingClientRect();
+    const modalWidth = 300;
+    const screenPadding = 16;
+    const screenWidth = window.innerWidth;
+
+    let left = rect.left + window.scrollX;
+    if (left + modalWidth + screenPadding > screenWidth) {
+      left = screenWidth - modalWidth - screenPadding;
+    }
+
+    hoverModal.style.top = (rect.top + window.scrollY) + "px";
+    hoverModal.style.left = left + "px";
+    hoverModal.style.width = modalWidth + "px";
+    hoverModal.dataset.id = id;
+    hoverModal.classList.remove("hidden");
+  });
+
+  card.addEventListener("mouseleave", () => {
+    hoverModal.classList.add("hidden");
+  });
+});
+
+// Prevent modal from hiding when mouse is inside
+hoverModal.addEventListener("mouseenter", () => {
+  hoverModal.classList.remove("hidden");
+});
+hoverModal.addEventListener("mouseleave", () => {
+  hoverModal.classList.add("hidden");
+});
+
+// ℹ️ Info Modal Open
+triangle.addEventListener("click", (e) => {
+  e.stopPropagation();
+  const id = parseInt(hoverModal.dataset.id);
+  const show = shows[id];
+
+  infoImage.src = show.image;
+  infoTitle.innerText = show.title;
+  infoTags.innerHTML = `
+    <span class="bg-zinc-700 px-2 py-0.5 rounded">${show.year}</span>
+    <span class="bg-zinc-700 px-2 py-0.5 rounded">${show.rating}</span>
+    <span class="bg-zinc-700 px-2 py-0.5 rounded">${show.type}</span>
+    ${show.genre.map(g => `<span class="bg-zinc-700 px-2 py-0.5 rounded">${g}</span>`).join("")}
+  `;
+  infoDesc.innerText = show.desc;
+  infoModal.classList.remove("hidden");
+});
+
+// ℹ️ Close Info Modal
+closeInfo.addEventListener("click", () => {
+  infoModal.classList.add("hidden");
+});
+
+// ▶️ Open YouTube Modal
+function openYT() {
+  const id = parseInt(hoverModal.dataset.id);
+  const show = shows[id];
+  const videoId = extractYouTubeId(show.youtubeId);
+
+  if (!videoId) {
+    console.error("Invalid YouTube link:", show.youtubeId);
+    return;
+  }
+
+  ytFrame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+  ytModal.classList.remove("hidden");
+}
+playHover.addEventListener("click", openYT);
+getStarted.addEventListener("click", openYT);
+
+// ❌ Close YouTube Modal
+closeYT.addEventListener("click", () => {
+  ytFrame.src = "";
+  ytModal.classList.add("hidden");
+});
+
+// ⏪⏩ Carousel Scroll
+leftBtn.addEventListener("click", () => {
+  carouselWrapper.scrollBy({ left: -300, behavior: "smooth" });
+});
+rightBtn.addEventListener("click", () => {
+  carouselWrapper.scrollBy({ left: 300, behavior: "smooth" });
+});
+
+// const YOUTUBE_URL = "https://www.youtube.com/embed/AGF16szMOmo";
+
+//     function openModal() {
+//       document.getElementById('fullModal').classList.remove('hidden');
+//     }
+
+//     function closeModal() {
+//       document.getElementById('fullModal').classList.add('hidden');
+//     }
+
+//     function playYouTube() {
+//       const iframe = document.getElementById('youtubeIframe');
+//       iframe.src = YOUTUBE_URL + "?autoplay=1&rel=0&modestbranding=1";
+//       document.getElementById('videoPlayer').classList.remove('hidden');
+//     }
+
+//     function closeYouTube() {
+//       document.getElementById('videoPlayer').classList.add('hidden');
+//       const iframe = document.getElementById('youtubeIframe');
+//       iframe.src = ""; // Reset to stop playback
+//     }
+
+
     const sections = [
       {
         title: "Animation",
