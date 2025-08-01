@@ -50,6 +50,73 @@
       overflow: visible !important;
     } */
 
+
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background: #f4f4f4;
+}
+
+.section-title {
+  font-size: 24px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.card {
+  width: calc(25% - 20px);
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.card img {
+  width: 100%;
+  display: block;
+  height: auto;
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  .card {
+    width: calc(33.33% - 20px);
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 100%;
+  }
+}
+
+
   </style>
    
 </head>
@@ -837,18 +904,18 @@ rightBtn.addEventListener("click", () => {
         cards: [
           { image: "./assests/pictures/n1.jpg", videoLink: "https://www.youtube.com/watch?v=2JUx8MqpRuM" },
           { image: "./assests/pictures/n2.jpg", videoLink: "https://www.youtube.com/watch?v=8BPlx6eK1vc" },
-          { image: "./assests/pictures/n3.jpg", videoLink: "https://www.youtube.com/watch?v=PzaajxPCbpY" },
+          { image: "./assests/pictures/nnn3.jpg", videoLink: "https://www.youtube.com/watch?v=PzaajxPCbpY" },
           { image: "./assests/pictures/n4.jpg", videoLink: "https://www.youtube.com/watch?v=TJMqft0yZeE" },
           { image: "./assests/pictures/n5.jpg", videoLink: "https://www.youtube.com/watch?v=TqT4fDQQqCc" },
           { image: "./assests/pictures/n6.jpg", videoLink: "https://www.youtube.com/watch?v=wUFwunMKa4E" },
-          { image: "./assests/pictures/n7.jpg", videoLink: "https://www.youtube.com/watch?v=9pbFEzMiXg8" },
+          { image: "./assests/pictures/n7.png", videoLink: "https://www.youtube.com/watch?v=9pbFEzMiXg8" },
           { image: "./assests/pictures/n8.jpg", videoLink: "https://www.youtube.com/watch?v=8IIJC-T4myo" },
           { image: "./assests/pictures/n9.jpg", videoLink: "https://www.youtube.com/watch?v=5LaEQSN-q7A" },
           { image: "./assests/pictures/n10.jpg", videoLink: "https://www.youtube.com/watch?v=49_44FFKZ1M" },
           { image: "./assests/pictures/n11.jpg", videoLink: "https://www.youtube.com/watch?v=rI55SRM6uhs" },
           { image: "./assests/pictures/n12.jpg", videoLink: "https://www.youtube.com/watch?v=eyiR8pO50JE" },
           { image: "./assests/pictures/n13.jpg", videoLink: "https://www.youtube.com/watch?v=ZONoMgeGAbI" },
-          { image: "./assests/pictures/n14.jpg", videoLink: "https://www.youtube.com/watch?v=EHYcymIQ7xo" },
+          { image: "./assests/pictures/n14.avif", videoLink: "https://www.youtube.com/watch?v=EHYcymIQ7xo" },
           { image: "./assests/pictures/n15.jpg", videoLink: "https://www.youtube.com/watch?v=YSEVaVc-nOo" }
         ]
       },
