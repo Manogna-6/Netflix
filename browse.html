@@ -1,25 +1,37 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NetMirror - Streaming Platform</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'netflix-red': '#e50914',
-                        'netflix-dark': '#141414',
-                    }
-                }
-            }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NetMirror - Streaming Platform</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind Custom Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'netflix-red': '#e50914',
+            'netflix-dark': '#141414',
+          }
         }
-    </script>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+      }
+    }
+  </script>
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Flowbite JS CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.5.1/flowbite.min.js"></script>
+
 <style>
     
    .no-scrollbar::-webkit-scrollbar {
@@ -168,39 +180,65 @@ body {
   </div>
 </header>
 </section>
-      <section class="relative h-[580px] flex items-end ">
-    <!-- Background Image -->
-    <div class="absolute inset-0 bg-cover bg-center" 
-    style="background-image: url('./assests/images/mad2.jpg'); background-size: cover;background-position: center;">
-        <div class="absolute inset-0 bg-black/40"></div>
-    </div>
+ 
 
-    <!-- Text Content Positioned at Bottom -->
-    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
-        <div class="max-w-2xl">
-            <!-- Language Options -->
-            <p class="text-gray-200 text-lg font-bold mb-4">
-                Watch in Telugu, Hindi, Tamil, Malayalam, Kannada
-            </p>
+<!-- banner -->
 
-            <!-- Description -->
-            <p class="text-gray-300 text-lg mb-8 max-w-xl leading-relaxed">
-                College friends Manoj, Ashok and Damodar take Laddu to Goa after ruining his wedding, but soon land in much deeper trouble.
-            </p>
 
-            <!-- Action Buttons -->
-            <div class="flex space-x-4">
-                <a href="https://youtu.be/x9jlQ0_K5Zc" target="_blank" class="flex items-center space-x-2 bg-white text-black px-8 py-3 rounded-md font-semibold hover:bg-gray-200 transition-all duration-200 transform hover:scale-105">
-                    <i class="fas fa-play"></i>
-                    <span>Play</span>
-                </a>
-            </div>
+<section>
+
+<div id="default-carousel" class="relative w-full" data-carousel="slide">
+    <!-- Carousel wrapper -->
+    <div class="relative h-80 md:h-[650px] overflow-hidden rounded-lg">
+         <!-- Item 1 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="./assests/carousel11.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>  
+        <!-- Item 2 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="./assests/carousel2.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 3 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="./assests/carousel3.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 4 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="./assests/carousel4.cms" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 5 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="./assests/carousel5.avif" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
         </div>
     </div>
-      </section> 
-<script src="script.js" defer></script>     
+    <!-- Slider indicators -->
+    <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
+    </div>
+    <!-- Slider controls -->
+    <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+            </svg>
+            <span class="sr-only">Previous</span>
+        </span>
+    </button>
+    <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+            </svg>
+            <span class="sr-only">Next</span>
+        </span>
+    </button>
+</div>
 
-
+</section>
 
 <!-- Section Heading -->
  
@@ -211,78 +249,6 @@ body {
   <h2 class="text-2xl font-bold mb-6 p-4">Romantic Korean TV Shows</h2>
 
  
-  <!-- <div id="fullModal" class="fixed inset-0 bg-black bg-opacity-90 z-[90] hidden flex items-center justify-center">
-    <div class="bg-zinc-900 rounded-lg max-w-2xl w-full p-6 relative">
-      <button onclick="closeModal()" class="absolute top-2 right-2 text-white text-2xl">&times;</button>
-      <img src="./assests/pictures/k-picture1.jpg" alt="Details" class="w-full rounded-md mb-4" />
-      <h3 class="text-xl font-bold mb-2">King the Land </h3>
-      <div class="flex gap-2 text-sm text-gray-300 mb-2">
-        <span class="border border-white px-2 py-0.5 rounded">2023</span>
-        <span class="border border-white px-2 py-0.5 rounded">U/A 16+</span>
-        <span class="border border-white px-2 py-0.5 rounded">Movie</span>
-        <span class="border border-white px-2 py-0.5 rounded">Drama</span>
-        <span class="border border-white px-2 py-0.5 rounded">Action</span>
-      </div>
-      <p class="text-gray-300 mb-4">
-       Gu Won, heir to the King Group, and Cheon Sa-rang, a bright hotelier, find themselves in a love-hate relationship at the elite "King Hotel." What starts as clashes of status and pride slowly unfolds into unexpected romance and healing.
-      </p>
-      <button onclick="playYouTube()" class="bg-red-600 px-4 py-2 rounded text-white">Get Started</button>
-    </div>
-  </div>
-
- 
-  <div id="videoPlayer" class="fixed inset-0 bg-black bg-opacity-95 z-[100] hidden flex items-center justify-center">
-    <div class="relative max-w-3xl w-full px-4">
-      <button onclick="closeYouTube()" class="absolute top-2 right-2 text-white text-3xl">&times;</button>
-      <div class="aspect-video w-full">
-        <iframe id="youtubeIframe" class="w-full h-full rounded-lg"
-          src=""
-          title="YouTube video"
-          frameborder="0"
-          allow="autoplay; encrypted-media"
-          allowfullscreen
-        ></iframe>
-      </div>
-    </div>
-  </div>
-
-  <div class="flex gap-6 flex-wrap p-4">
-
-    <div class="relative group w-[300px] h-[170px] transition-all duration-300">
-      <img
-        src="./assests/pictures/k-picture1.jpg"
-        alt="K-Drama"
-        class="w-full h-full object-cover rounded-lg transition-all duration-300 transform group-hover:-translate-y-6 group-hover:scale-110 z-10 relative"
-      />
-
-      <div
-        class="absolute z-50 left-0 top-[-150px] w-[420px] h-[300px] bg-zinc-900 rounded-lg shadow-2xl scale-0 group-hover:scale-100 origin-bottom-left transition-transform duration-300 ease-in-out overflow-visible"
-      >
-        <img src="./assests/pictures/k-picture1.jpg" class="w-full h-[200px] object-cover rounded-t-lg" alt="Preview" />
-
-        <div class="p-4 space-y-2" style="background-color: black;">
-          <div class="flex justify-between items-center">
-            <div class="flex gap-2">
-              <button onclick="playYouTube()" class="bg-white text-black p-2 rounded-full">&#9658;</button>
-              <button class="bg-neutral-700 p-2 rounded-full">+</button>
-              <button class="bg-neutral-700 p-2 rounded-full">&#x1F4E5;</button>
-            </div>
-            <button onclick="openModal()" class="bg-neutral-700 p-2 rounded-full">&#x25BC;</button>
-          </div>
-
-          <div class="text-sm flex gap-3 items-center flex-wrap">
-            <span class="text-green-400 font-bold">91% Match</span>
-            <span class="border border-white px-1 text-xs">U/A 16+</span>
-            <span>1 Season</span>
-            <span class="text-xs border border-gray-500 px-1">HD</span>
-          </div>
-
-          <div class="text-gray-400 text-sm">Romance • Drama • Comedy</div>
-        </div>
-      </div>
-    </div>
-  </div>
- -->
 
 <div class="relative px-4">
   <!-- Left Button -->
